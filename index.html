@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1 class="text-3xl font-bold">My To-Do List</h1>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+
+        <section class="input-section">
+            <input type="text" id="task-input" placeholder="Enter a new task">
+            <input type="date" id="task-due-date" placeholder="Enter due date">
+            <button id="add-task-btn">Add Task</button>
+        </section>
+
+        <!-- Action Section -->
+        <section class="filter-section">
+            <label for="filter-tasks">Filter Tasks:</label>
+            <select id="filter-tasks">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+            </select>
+        </section>
+
+        <section class="search-section">
+            <input type="text" id="search-tasks" placeholder="Search tasks...">
+        </section>
+
+        <section class="delete">
+            <button id="delete-completed-btn">Delete Completed Tasks</button>
+        </section>
+
+        <!-- Tasks Section -->
+        <section class="tasks-section">
+            <ul id="task-list">
+                <!-- Tasks will be added here dynamically -->
+            </ul>
+        </section>
+
+        <section>
+            <h2>List of Tasks</h2>
+            <ul id="task-list">
+                <!-- Tasks will be added here dynamically -->
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 My To-Do List</p>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="js/script.js"></script>
+    
+</body>
+
+</html>
