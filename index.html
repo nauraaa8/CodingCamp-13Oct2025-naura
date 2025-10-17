@@ -13,60 +13,67 @@
 <body>
     <!-- Header Section -->
     <header>
-        <h1 class="text-3xl font-bold">My To-Do List</h1>
+        <div class="header-bar">
+            <h1 class="text-3xl font-bold py-5">My To-Do List</h1>
+        </div>
     </header>
+
+    <!-- Theme toggle outside the card, top-right -->
+    <div class="outside-toggle">
+        <button id="theme-toggle" class="border border-black rounded py-1 px-2" aria-label="Toggle theme">🌙</button>
+    </div>
 
     <!-- Main Content Section -->
     <main>
 
         <section class="input-section">
-            <input type="text" id="task-input" placeholder="Enter a new task">
-            <input type="date" id="task-due-date" placeholder="Enter due date">
-            <button id="add-task-btn">Add Task</button>
+            <input type="text" id="task-input" placeholder="Enter a new task" class="border border-black rounded py-1 px-2">
+            <input type="date" id="task-due-date" placeholder="Enter due date" class="border border-black rounded py-1 px-2">
+            <input type="time" id="task-due-time" placeholder="Enter time" class="border border-black rounded py-1 px-2">
+            <button id="add-task-btn" class="border border-black rounded py-1 px-2 bg-fuchsia-500 text-white font-bold">Add Task</button>
         </section>
 
+        
+
         <!-- Action Section -->
-        <section class="filter-section">
-            <label for="filter-tasks">Filter Tasks:</label>
-            <select id="filter-tasks">
+       
+        <section class="filter-delete-section" style="margin-top: 10px;">
+            <!-- Filter Section -->
+            <label for="filter-tasks" class="font-semibold">Filter Tasks:</label>
+            <select id="filter-tasks" class="border border-black rounded py-1 px-2">
                 <option value="all">All</option>
                 <option value="completed">Completed</option>
                 <option value="pending">Pending</option>
             </select>
+            <!-- Delete Section -->
+            <button id="delete-completed-btn" class="border border-black rounded py-1 px-2 bg-red-500 text-white font-bold ml-20">Delete Completed</button>
         </section>
 
-        <section class="search-section">
-            <input type="text" id="search-tasks" placeholder="Search tasks...">
-        </section>
-
-        <section class="delete">
-            <button id="delete-completed-btn">Delete Completed Tasks</button>
+        <!-- Search Section -->
+        <section class="search-section " style="margin-top: 10px;">
+            <input type="text" id="search-tasks" placeholder="Search tasks..." class="border border-black rounded py-1 px-2">
         </section>
 
         <!-- Tasks Section -->
         <section class="tasks-section">
-            <ul id="task-list">
-                <!-- Tasks will be added here dynamically -->
-            </ul>
-        </section>
-
-        <section>
             <h2>List of Tasks</h2>
             <ul id="task-list">
                 <!-- Tasks will be added here dynamically -->
             </ul>
         </section>
 
+        
+
     </main>
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2025 My To-Do List</p>
+        <p style="margin-top: 10px;">&copy; 2025 My To-Do List</p>
     </footer>
 
     <!-- Link to external JavaScript file -->
     <script src="js/script.js"></script>
-    
+
 </body>
 
 </html>

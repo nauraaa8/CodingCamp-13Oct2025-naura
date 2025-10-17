@@ -1,5 +1,225 @@
+/* THEME VARIABLES */
+:root {
+    /* Pastel pink base with soft purple accent */
+    --bg: #ffe7ef;           /* pastel pink */
+    --bg-accent: #fde2ff;    /* very light purple-pink */
+    --bg2: #f3e8ff;          /* soft lavender for gradient mix */
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --shadow: rgba(2, 6, 23, 0.06);
+
+    /* Softer pastel gradient for Day mode */
+    --primary: #e1caff;      /* pastel purple */
+    --primary-strong: #c7a8ff;
+    --accent: #ffcfe1;       /* pastel pink */
+    --accent-strong: #ff9fc6;
+    --danger: #ef4444;
+    --danger-strong: #dc2626;
+    --warn: #f50b80;
+    --warn-strong: #d97706;
+    --card-border: var(--border);
+}
+
+.theme-dark {
+    /* Dark purple night theme with neon pink accents */
+    --bg: #120a1a;
+    --bg-accent: #0b0611;
+    --bg2: #2a1748;
+    --card: #0e0a16;          /* dark card */
+    --text: #e5e7eb;
+    --muted: #a1a1aa;
+    --border: #271a3a;        /* subtle inner borders */
+    --shadow: rgba(10, 2, 23, 0.45);
+
+    /* Background gradient colors (purple → deep violet) */
+    --accent: #431d80;        /* deep purple */
+    --accent-strong: #2e1357;
+    --primary: #220a3a;       /* very dark violet */
+    --primary-strong: #1a082e;
+
+    --danger: #d63636;
+    --danger-strong: #ee2626;
+    --warn: #fb246c;
+    --warn-strong: #f50b8c;
+
+    /* Neon pink border for the card */
+    --neon: #ff3ea5;
+    --card-border: var(--neon);
+}
+
 body {
     justify-items: center;
     height: 100vh;
     align-content: center;
+    /* Purple → Pink gradient background */
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
 }   
+
+/* Layout containers */
+header, footer {
+    text-align: center;
+}
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.outside-toggle {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    z-index: 10;
+}
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 12px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px var(--shadow);
+    position: relative;
+}
+
+/* Neon glow for the card in dark mode */
+.theme-dark main {
+    box-shadow: 0 0 0 1px var(--card-border), 0 0 22px rgba(255, 62, 165, 0.35), 0 10px 30px var(--shadow);
+}
+
+.input-section,
+.filter-delete-section,
+.search-section,
+.tasks-section {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 8px;
+    align-items: center;
+}
+
+.filter-delete-section {
+    display: flex;               /* override grid for this row */
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.tasks-section {
+    display: block;
+    margin-top: 12px;
+}
+
+.tasks-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Task list styling */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#task-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--card);
+    transition: background-color 120ms ease, box-shadow 120ms ease;
+}
+
+#task-list li:last-child {
+    border-bottom: none;
+}
+
+#task-list li[data-status="completed"] span:first-of-type {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
+#task-list li:hover {
+    background: var(--bg);
+}
+
+/* Controls */
+button {
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+    min-height: 36px;
+    padding: 6px 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+/* Make the filter dropdown a bit wider */
+#filter-tasks {
+    min-width: 140px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+
+/* Primary button (Add Task) */
+#add-task-btn {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+
+#add-task-btn:hover {
+    background: var(--primary-strong);
+}
+
+/* Night mode: make Add Task button pink */
+.theme-dark #add-task-btn {
+    border-color: var(--accent);
+    background: var(--accent);
+}
+
+.theme-dark #add-task-btn:hover {
+    background: var(--accent-strong);
+}
+
+/* Danger button (Delete Completed) */
+#delete-completed-btn {
+    border-color: var(--danger);
+    background: var(--danger);
+}
+
+#delete-completed-btn:hover {
+    background: var(--danger-strong);
+}
+
+/* Edit button */
+.edit-btn {
+    background: var(--warn);
+    border-color: var(--warn);
+}
+
+.edit-btn:hover {
+    background: var(--warn-strong);
+}
